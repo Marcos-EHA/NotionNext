@@ -1,0 +1,3 @@
+ties.pageCoverThumbnail =
+    mapImgUrl(value?.format?.page_cover, value, 'block') ?? ''
+  properties.ext = convertToJSON(p

@@ -1,0 +1,90 @@
+D:\Nexnotion\components\PWA.js:22: src: compressImage(post?.pageCoverThumbnail, 192),
+D:\Nexnotion\components\SEO.js:389: image: post?.pageCoverThumbnail || `${siteInfo?.pageCover}`,
+D:\Nexnotion\lib\db\getSiteData.js:111: pageCoverThumbnail: BLOG.HOME_BANNER_IMAGE,
+D:\Nexnotion\lib\db\getSiteData.js:832: pageCoverThumbnail: item.pageCoverThumbnail || '',
+D:\Nexnotion\lib\notion\getPageProperties.js:111: properties.pageCoverThumbnail =
+D:\Nexnotion\themes\commerce\components\ArticleRecommend.js:33: const headerImage = post?.pageCoverThumbnail
+D:\Nexnotion\themes\commerce\components\ArticleRecommend.js:34: ? post.pageCoverThumbnail
+D:\Nexnotion\themes\commerce\components\LatestPostsGroup.js:33: const headerImage = post?.pageCoverThumbnail ? post.pageCoverThumbnail : siteInfo?.pageCover
+D:\Nexnotion\themes\commerce\components\ProductCard.js:11: if (post && !post.pageCoverThumbnail && CONFIG.POST_LIST_COVER_DEFAULT) {
+D:\Nexnotion\themes\commerce\components\ProductCard.js:12: post.pageCoverThumbnail = siteInfo?.pageCover
+D:\Nexnotion\themes\commerce\components\ProductCard.js:24: <LazyImage priority={index === 1} src={post?.pageCoverThumbnail} className='h-auto aspect-square w-full object-cover object-center group-hover:scale-110 duration-500' />
+D:\Nexnotion\themes\example\components\BlogItem.js:16: post?.pageCoverThumbnail
+D:\Nexnotion\themes\example\components\BlogItem.js:73: src={post?.pageCoverThumbnail}
+D:\Nexnotion\themes\example\components\TitleBar.js:15: const headerImage = post?.pageCoverThumbnail
+D:\Nexnotion\themes\example\components\TitleBar.js:16: ? post.pageCoverThumbnail
+D:\Nexnotion\themes\fukasawa\components\BlogCard.js:24: post.pageCoverThumbnail = siteInfo?.pageCover
+D:\Nexnotion\themes\fukasawa\components\BlogCard.js:28: post?.pageCoverThumbnail
+D:\Nexnotion\themes\fukasawa\components\BlogCard.js:57: src={post?.pageCoverThumbnail}
+D:\Nexnotion\themes\game\components\GameEmbed.js:165: {game?.pageCoverThumbnail && (
+D:\Nexnotion\themes\game\components\GameEmbed.js:167: src={game?.pageCoverThumbnail}
+D:\Nexnotion\themes\game\components\GameListIndexCombine.js:140: const img = item.pageCoverThumbnail
+D:\Nexnotion\themes\game\components\GameListNormal.js:43: const img = item.pageCoverThumbnail
+D:\Nexnotion\themes\game\components\GameListRealate.js:45: const img = item?.pageCoverThumbnail
+D:\Nexnotion\themes\game\components\GameListRecent.js:78: const img = item?.pageCoverThumbnail
+D:\Nexnotion\themes\gitbook\index.js:70: pageCoverThumbnail: item.pageCoverThumbnail || '',
+D:\Nexnotion\themes\heo\components\BlogPostArchive.js:29: !post.pageCoverThumbnail &&
+D:\Nexnotion\themes\heo\components\BlogPostArchive.js:32: post.pageCoverThumbnail = siteInfo?.pageCover
+D:\Nexnotion\themes\heo\components\BlogPostArchive.js:36: post?.pageCoverThumbnail &&
+D:\Nexnotion\themes\heo\components\BlogPostArchive.js:50: src={post?.pageCoverThumbnail}
+D:\Nexnotion\themes\heo\components\BlogPostCard.js:13: !post.pageCoverThumbnail &&
+D:\Nexnotion\themes\heo\components\BlogPostCard.js:16: post.pageCoverThumbnail = siteInfo?.pageCover
+D:\Nexnotion\themes\heo\components\BlogPostCard.js:20: post?.pageCoverThumbnail &&
+D:\Nexnotion\themes\heo\components\BlogPostCard.js:49: src={post?.pageCoverThumbnail}
+D:\Nexnotion\themes\heo\components\Hero.js:248: src={p?.pageCoverThumbnail || siteInfo?.pageCover}
+D:\Nexnotion\themes\heo\components\LatestPostsGroup.js:20: const headerImage = post?.pageCoverThumbnail
+D:\Nexnotion\themes\heo\components\LatestPostsGroup.js:21: ? post.pageCoverThumbnail
+D:\Nexnotion\themes\heo\components\LatestPostsGroupMini.js:31: const headerImage = post?.pageCoverThumbnail
+D:\Nexnotion\themes\heo\components\LatestPostsGroupMini.js:32: ? post.pageCoverThumbnail
+D:\Nexnotion\themes\heo\components\PostRecommend.js:37: const headerImage = post?.pageCoverThumbnail
+D:\Nexnotion\themes\heo\components\PostRecommend.js:38: ? post?.pageCoverThumbnail
+D:\Nexnotion\themes\hexo\components\ArticleRecommend.js:33: const headerImage = post?.pageCoverThumbnail
+D:\Nexnotion\themes\hexo\components\ArticleRecommend.js:34: ? post.pageCoverThumbnail
+D:\Nexnotion\themes\hexo\components\BlogPostCard.js:12: !post.pageCoverThumbnail &&
+D:\Nexnotion\themes\hexo\components\BlogPostCard.js:15: post.pageCoverThumbnail = siteInfo?.pageCover
+D:\Nexnotion\themes\hexo\components\BlogPostCard.js:19: post?.pageCoverThumbnail &&
+D:\Nexnotion\themes\hexo\components\BlogPostCard.js:53: src={post?.pageCoverThumbnail}
+D:\Nexnotion\themes\hexo\components\LatestPostsGroup.js:31: const headerImage = post?.pageCoverThumbnail
+D:\Nexnotion\themes\hexo\components\LatestPostsGroup.js:32: ? post.pageCoverThumbnail
+D:\Nexnotion\themes\magzine\components\PostGroupLatest.js:36: const headerImage = post?.pageCoverThumbnail
+D:\Nexnotion\themes\magzine\components\PostGroupLatest.js:37: ? post.pageCoverThumbnail
+D:\Nexnotion\themes\magzine\components\PostItemCard.js:15: const cover = post?.pageCoverThumbnail || siteInfo?.pageCover
+D:\Nexnotion\themes\magzine\components\PostItemCardTop.js:30: post?.pageCoverThumbnail && (
+D:\Nexnotion\themes\magzine\components\PostItemCardTop.js:41: src={post?.pageCoverThumbnail}
+D:\Nexnotion\themes\magzine\components\PostItemCardWide.js:77: src={post?.pageCoverThumbnail}
+D:\Nexnotion\themes\magzine\components\PostItemCardWide.js:78: style={post?.pageCoverThumbnail ? {} : { height: '0px' }}
+D:\Nexnotion\themes\matery\components\ArticleRecommend.js:33: const headerImage = post?.pageCoverThumbnail
+D:\Nexnotion\themes\matery\components\ArticleRecommend.js:34: ? post.pageCoverThumbnail
+D:\Nexnotion\themes\matery\components\BlogPostCard.js:19: if (post && !post.pageCoverThumbnail) {
+D:\Nexnotion\themes\matery\components\BlogPostCard.js:20: post.pageCoverThumbnail = siteInfo?.pageCover
+D:\Nexnotion\themes\matery\components\BlogPostCard.js:24: post?.pageCoverThumbnail
+D:\Nexnotion\themes\matery\components\BlogPostCard.js:42: src={post?.pageCoverThumbnail}
+D:\Nexnotion\themes\matery\components\PostHero.js:9: const headerImage = post?.pageCoverThumbnail
+D:\Nexnotion\themes\matery\components\PostHero.js:10: ? post?.pageCoverThumbnail
+D:\Nexnotion\themes\medium\components\BlogPostCard.js:35: src={post.pageCoverThumbnail}
+D:\Nexnotion\themes\medium\components\BlogPostCard.js:36: style={post.pageCoverThumbnail ? {} : { height: '0px' }}
+D:\Nexnotion\themes\movie\components\BlogPostCard.js:9: if (post && !post.pageCoverThumbnail) {
+D:\Nexnotion\themes\movie\components\BlogPostCard.js:10: post.pageCoverThumbnail =
+D:\Nexnotion\themes\movie\components\BlogPostCard.js:24: src={post?.pageCoverThumbnail}
+D:\Nexnotion\themes\movie\components\BlogRecommend.js:33: const headerImage = post?.pageCoverThumbnail
+D:\Nexnotion\themes\movie\components\BlogRecommend.js:34: ? post.pageCoverThumbnail
+D:\Nexnotion\themes\next\components\BlogPostCard.js:116: post?.pageCoverThumbnail && (
+D:\Nexnotion\themes\next\components\BlogPostCard.js:121: src={post?.pageCoverThumbnail}
+D:\Nexnotion\themes\photo\components\BlogPostCard.js:9: if (post && !post.pageCoverThumbnail) {
+D:\Nexnotion\themes\photo\components\BlogPostCard.js:10: post.pageCoverThumbnail =
+D:\Nexnotion\themes\photo\components\BlogPostCard.js:24: src={post?.pageCoverThumbnail}
+D:\Nexnotion\themes\photo\components\BlogRecommend.js:33: const headerImage = post?.pageCoverThumbnail
+D:\Nexnotion\themes\photo\components\BlogRecommend.js:34: ? post.pageCoverThumbnail
+D:\Nexnotion\themes\photo\components\PostItemCard.js:14: const cover = post?.pageCoverThumbnail || siteInfo?.pageCover
+D:\Nexnotion\themes\plog\components\BlogPost.js:16: const pageThumbnail = compressImage(post?.pageCoverThumbnail || siteInfo?.pageCover)
+D:\Nexnotion\themes\plog\components\Modal.js:18: modalContent?.pageCoverThumbnail || siteInfo?.pageCoverThumbnail
+D:\Nexnotion\themes\proxio\components\Blog.js:73: {item.pageCoverThumbnail && (
+D:\Nexnotion\themes\proxio\components\Blog.js:76: src={item.pageCoverThumbnail}
+D:\Nexnotion\themes\proxio\index.js:369: src={item.pageCoverThumbnail}
+D:\Nexnotion\themes\simple\components\BlogItem.js:31: src={post?.pageCoverThumbnail}
+D:\Nexnotion\themes\starter\components\Blog.js:43: {item.pageCoverThumbnail && (
+D:\Nexnotion\themes\starter\components\Blog.js:46: src={item.pageCoverThumbnail}
+D:\Nexnotion\themes\starter\components\Footer.js:80: {item.pageCoverThumbnail && (
+D:\Nexnotion\themes\starter\components\Footer.js:83: src={item.pageCoverThumbnail}
+D:\Nexnotion\themes\starter\index.js:367: src={item.pageCoverThumbnail}
+D:\Nexnotion\themes\typography\components\BlogItem.js:28: src={post?.pageCoverThumbnail}
