@@ -35,7 +35,7 @@ module.exports = {
     process.env.NEXT_PUBLIC_ARTICLE_EXPIRATION_DAYS || 90, // 文章过期提醒阈值（天）
   ARTICLE_EXPIRATION_MESSAGE:
     process.env.NEXT_PUBLIC_ARTICLE_EXPIRATION_MESSAGE ||
-    '这篇文章发布于 %%DAYS%% 天前，内容可能已过时，请谨慎参考。', // 过期提示信息，使用 %%DAYS%% 作为天数占位符
+    'Este artículo fue publicado hace %%DAYS%% días, el contenido podría estar desactualizado, útil como referencia.', // 过期提示信息，使用 %%DAYS%% 作为天数占位符
   ARTICLE_EXPIRATION_ENABLED:
     process.env.NEXT_PUBLIC_ARTICLE_EXPIRATION_ENABLED || 'false', // 是否启用文章过期提醒
 
