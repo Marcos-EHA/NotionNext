@@ -33,8 +33,8 @@ module.exports = {
   // 微软 Clarity 站点分析
   CLARITY_ID: process.env.NEXT_PUBLIC_CLARITY_ID || null, // 只需要复制Clarity脚本中的ID部分，ID是一个十位的英文数字组合
 
-  UMAMI_HOST: process.env.NEXT_PUBLIC_UMAMI_HOST || 'https://cloud.umami.is/script.js', // umami的服务地址
-  UMAMI_ID: process.env.NEXT_PUBLIC_UMAMI_ID || '', // umami的id
+  UMAMI_HOST: process.env.NEXT_PUBLIC_UMAMI_HOST || 'https://umami-theta-sepia.vercel.app/script.js', // URL del script de Umami
+  UMAMI_ID: process.env.NEXT_PUBLIC_UMAMI_ID || '2ddb97ac-bb89-450c-8bbf-8241ede0b13a', // Website ID de Umami
 
   // <---- 站点统计
 }
