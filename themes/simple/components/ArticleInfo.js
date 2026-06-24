@@ -4,6 +4,7 @@ import CONFIG from '../config'
 import { siteConfig } from '@/lib/config'
 import { formatDateFmt } from '@/lib/utils/formatDate'
 import NotionIcon from '@/components/NotionIcon'
+import UmamiViewCounter from '@/components/UmamiViewCounter'
 
 /**
  * 文章描述
@@ -45,11 +46,7 @@ export default function ArticleInfo (props) {
                         {locale.COMMON.LAST_EDITED_TIME}: {post?.lastEditedDay}
                     </span>
                     <span className='mr-2'>|</span>
-                    <span className="hidden busuanzi_container_page_pv font-light mr-2">
-                        <i className='mr-1 fas fa-eye' />
-                        &nbsp;
-                        <span className="mr-2 busuanzi_value_page_pv" />
-                    </span>
+                    <UmamiViewCounter slug={post?.slug} />
                 </div>)}
 
             </div>

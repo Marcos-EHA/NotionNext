@@ -2,6 +2,7 @@ import LazyImage from '@/components/LazyImage'
 import NotionIcon from '@/components/NotionIcon'
 import NotionPage from '@/components/NotionPage'
 import TwikooCommentCount from '@/components/TwikooCommentCount'
+import UmamiViewCounter from '@/components/UmamiViewCounter'
 import { siteConfig } from '@/lib/config'
 import { useGlobal } from '@/lib/global'
 import { formatDateFmt } from '@/lib/utils/formatDate'
@@ -69,6 +70,9 @@ export const BlogItem = props => {
               </span>
               <span>
                 <TwikooCommentCount post={post} />
+              </span>
+              <span className='p-1'>
+                <UmamiViewCounter slug={post?.slug} />
               </span>
             </div>
 
