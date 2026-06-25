@@ -3,6 +3,7 @@ import { siteConfig } from '@/lib/config'
 import SmartLink from '@/components/SmartLink'
 import CONFIG from '../config'
 import SocialButton from './SocialButton'
+import UmamiActiveVisitors from '@/components/UmamiActiveVisitors'
 
 /**
  * 网站顶部
@@ -47,6 +48,9 @@ export default function Header(props) {
         </div>
         <div className='text-xs mt-4 text-gray-500 dark:text-gray-300'>
           {siteConfig('DESCRIPTION')}
+        </div>
+        <div className='flex justify-center mt-2'>
+          <UmamiActiveVisitors />
         </div>
       </div>
     </header>
