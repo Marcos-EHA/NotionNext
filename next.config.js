@@ -180,7 +180,9 @@ const nextConfig = {
     : {
       defaultLocale: BLOG.LANG,
       // 支持的所有多语言,按需填写即可
-      locales: locales
+      locales: locales,
+      // Excluir rutas API del sistema i18n
+      localeDetection: false
     },
   images: {
     // 图片压缩和格式优化
