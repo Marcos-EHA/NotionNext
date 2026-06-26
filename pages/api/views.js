@@ -17,11 +17,7 @@ async function getUmamiToken () {
   const password = process.env.UMAMI_PASSWORD
 
   if (!umamiUrl || !username || !password) {
-    console.error('[Umami] Missing env vars:', {
-      hasUrl: !!umamiUrl,
-      hasUser: !!username,
-      hasPass: !!password
-    })
+    console.error('[Umami] Missing env vars')
     return null
   }
 
@@ -33,17 +29,13 @@ async function getUmamiToken () {
     })
 
     const text = await res.text()
-    console.log('[Umami] Auth response:', res.status, text.substring(0, 200))
+    console.log('[Umami] Auth response:', res.status, text.substring(0, 100))
 
     if (!res.ok) return null
 
     const data = JSON.parse(text)
-    // Umami v1 returns { token } / v2 returns { token } inside data
     const token = data?.token || data?.data?.token
-    if (!token) {
-      console.error('[Umami] No token in response:', data)
-      return null
-    }
+    if (!token) return null
 
     cachedToken = token
     tokenExpiry = Date.now() + 23 * 60 * 60 * 1000
@@ -55,19 +47,12 @@ async function getUmamiToken () {
 }
 
 export default async function handler (req, res) {
-  // Prevenir que el sistema i18n interfiera
-  if (req.headers['x-nextjs-data']) {
-    return res.status(400).json({ error: 'Not an API route' })
-  }
-
   const { type, slug } = req.query
   const websiteId = process.env.NEXT_PUBLIC_UMAMI_ID
   const baseUrl = process.env.UMAMI_URL
 
-  console.log('[Umami] Request:', { type, slug, websiteId: !!websiteId, baseUrl })
-
   if (!websiteId || !baseUrl) {
-    return res.status(500).json({ error: 'Umami no configurado', websiteId: !!websiteId, baseUrl: !!baseUrl })
+    return res.status(500).json({ error: 'Umami no configurado' })
   }
 
   try {
@@ -82,32 +67,35 @@ export default async function handler (req, res) {
     if (type === 'active') {
       const r = await fetch(`${baseUrl}/api/websites/${websiteId}/active`, { headers })
       const text = await r.text()
-      console.log('[Umami] Active response:', r.status, text.substring(0, 200))
-      if (!r.ok) return res.status(500).json({ error: 'Error en Umami active', status: r.status })
+      console.log('[Umami] Active response:', r.status, text.substring(0, 100))
+      if (!r.ok) return res.status(500).json({ error: 'Error en active', status: r.status })
       const data = JSON.parse(text)
-      const active = data?.x ?? data?.active ?? data ?? 0
+      // Umami puede responder como { visitors: N } o { x: N } o un número
+      const active = typeof data === 'number'
+        ? data
+        : (data?.visitors ?? data?.x ?? data?.active ?? 0)
       res.setHeader('Cache-Control', 's-maxage=10, stale-while-revalidate')
-      return res.status(200).json({ active })
+      return res.status(200).json({ active: Number(active) })
     }
 
     // Vistas de un artículo específico
     if (type === 'page' && slug) {
       const now = Date.now()
-      const r = await fetch(
-        `${baseUrl}/api/websites/${websiteId}/metrics?type=url&startAt=0&endAt=${now}&url=${encodeURIComponent(slug)}`,
-        { headers }
-      )
+      // Umami v1 usa snake_case: start_at, end_at
+      const url = `${baseUrl}/api/websites/${websiteId}/metrics?type=url&start_at=0&end_at=${now}&url=${encodeURIComponent(slug)}`
+      console.log('[Umami] Metrics URL:', url)
+      const r = await fetch(url, { headers })
       const text = await r.text()
-      console.log('[Umami] Metrics response:', r.status, text.substring(0, 300))
-      if (!r.ok) return res.status(500).json({ error: 'Error en Umami metrics', status: r.status })
+      console.log('[Umami] Metrics response:', r.status, text.substring(0, 200))
+      if (!r.ok) return res.status(500).json({ error: 'Error en metrics', status: r.status, body: text })
       const metrics = JSON.parse(text)
       const pageData = Array.isArray(metrics) ? metrics.find(m => m.x === slug) : null
       const views = pageData ? pageData.y : 0
       res.setHeader('Cache-Control', 's-maxage=60, stale-while-revalidate')
-      return res.status(200).json({ views })
+      return res.status(200).json({ views: Number(views) })
     }
 
-    return res.status(400).json({ error: 'Parámetros inválidos. Usa type=active o type=page&slug=/ruta' })
+    return res.status(400).json({ error: 'Parámetros inválidos' })
   } catch (error) {
     console.error('[Umami] Handler error:', error.message)
     return res.status(500).json({ error: error.message })
