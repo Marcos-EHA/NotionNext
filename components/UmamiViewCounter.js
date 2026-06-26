@@ -2,19 +2,32 @@ import { useEffect, useState } from 'react'
 
 /**
  * Contador de vistas de un artículo específico usando Umami
- * Muestra: 👁️ 42
+ * Recibe href (ej: /article/example-1) o slug (ej: example-1)
  */
-export default function UmamiViewCounter ({ slug }) {
+export default function UmamiViewCounter ({ slug, href }) {
   const [views, setViews] = useState(null)
 
   useEffect(() => {
-    if (!slug) return
-    const articleSlug = slug.startsWith('/') ? slug : `/article/${slug}`
-    fetch(`/api/views?type=page&slug=${encodeURIComponent(articleSlug)}`)
+    // Usar href si está disponible (ya tiene la ruta completa correcta)
+    // si no, construir desde slug
+    let articlePath = href || slug
+    if (!articlePath) return
+
+    // Asegurar que empieza con /
+    if (!articlePath.startsWith('/')) {
+      articlePath = '/' + articlePath
+    }
+
+    // Evitar doble prefijo /article/article/
+    if (articlePath.includes('/article/article/')) {
+      articlePath = articlePath.replace('/article/article/', '/article/')
+    }
+
+    fetch(`/api/views?type=page&slug=${encodeURIComponent(articlePath)}`)
       .then(r => r.json())
       .then(data => { if (data.views !== undefined) setViews(data.views) })
       .catch(() => {})
-  }, [slug])
+  }, [slug, href])
 
   if (views === null) return null
 

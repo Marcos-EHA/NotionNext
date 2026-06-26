@@ -46,7 +46,7 @@ export default function ArticleInfo (props) {
                         {locale.COMMON.LAST_EDITED_TIME}: {post?.lastEditedDay}
                     </span>
                     <span className='mr-2'>|</span>
-                    <UmamiViewCounter slug={post?.slug} />
+                    <UmamiViewCounter slug={post?.slug} href={post?.href} />
                 </div>)}
 
             </div>

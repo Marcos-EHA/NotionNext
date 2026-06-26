@@ -3,6 +3,7 @@ import { useRouter } from 'next/router'
 import { useState } from 'react'
 import { useSimpleGlobal } from '..'
 import { MenuList } from './MenuList'
+import UmamiActiveVisitors from '@/components/UmamiActiveVisitors'
 
 /**
  * 菜单导航
@@ -55,7 +56,11 @@ export default function NavBar(props) {
           {!showSearchInput && <MenuList {...props} />}
         </div>
 
-        <div className='absolute right-12 h-full text-center px-2 flex items-center text-blue-400  cursor-pointer'>
+        <div className='absolute right-16 h-full text-center px-2 flex items-center text-green-500 text-xs'>
+          <UmamiActiveVisitors />
+        </div>
+
+        <div className='absolute right-4 h-full text-center px-2 flex items-center text-blue-400  cursor-pointer'>
           {/* <!-- extra links --> */}
           <i
             className={

@@ -72,7 +72,7 @@ export const BlogItem = props => {
                 <TwikooCommentCount post={post} />
               </span>
               <span className='p-1'>
-                <UmamiViewCounter slug={post?.slug} />
+                <UmamiViewCounter slug={post?.slug} href={post?.href} />
               </span>
             </div>
 
