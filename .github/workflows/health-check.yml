@@ -1,0 +1,36 @@
+name: Health check del blog
+
+# Visita el blog cada 6 horas. Si no responde o no muestra articulos,
+# el flujo falla y GitHub envia un correo a quien edito este archivo.
+on:
+  schedule:
+    - cron: '17 */6 * * *'
+  workflow_dispatch:
+
+permissions:
+  actions: write
+  contents: read
+
+jobs:
+  check:
+    name: Comprobar que el blog carga contenido real
+    runs-on: ubuntu-latest
+    steps:
+      - name: Visitar el blog y validar contenido
+        run: |
+          code=$(curl -s -o page.html -w '%{http_code}' -A 'Mozilla/5.0 (health-check)' --max-time 60 https://marcosblog.vercel.app/)
+          echo "Respuesta HTTP: $code"
+          if [ "$code" != "200" ]; then echo "El blog respondio HTTP $code"; exit 1; fi
+          n=$(grep -o '/article/[A-Za-z0-9_-]*' page.html | sort -u | wc -l)
+          echo "Articulos distintos encontrados en la portada: $n"
+          if [ "$n" -lt 3 ]; then echo "La portada no muestra articulos: posible fallo de lectura desde Notion"; exit 1; fi
+          if grep -q 'Application error' page.html; then echo "Pagina de error detectada"; exit 1; fi
+
+      - name: Mantener activos los flujos programados
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          for wf in health-check.yml sync.yaml; do
+            gh api -X PUT "repos/${{ github.repository }}/actions/workflows/$wf/enable" || true
+          done
