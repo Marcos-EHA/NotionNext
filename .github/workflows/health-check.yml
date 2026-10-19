@@ -31,6 +31,6 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          for wf in health-check.yml sync.yaml; do
+          for wf in health-check.yml upstream-prepare.yml; do
             gh api -X PUT "repos/${{ github.repository }}/actions/workflows/$wf/enable" || true
           done

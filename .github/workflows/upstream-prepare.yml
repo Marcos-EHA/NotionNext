@@ -1,0 +1,42 @@
+name: Preparar actualizacion del proyecto original
+
+# Cada lunes intenta traer los cambios del proyecto original a la rama
+# "upstream-sync" (NUNCA a main). Vercel crea una vista previa de esa rama.
+# Si hay conflictos, el flujo falla y GitHub envia un correo.
+on:
+  schedule:
+    - cron: '0 13 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  prepare:
+    name: Mezclar el original en la rama upstream-sync
+    runs-on: ubuntu-latest
+    if: ${{ github.event.repository.fork }}
+    steps:
+      - name: Descargar el repositorio completo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Intentar la mezcla
+        run: |
+          git config user.name 'github-actions'
+          git config user.email 'github-actions@users.noreply.github.com'
+          git remote add upstream https://github.com/notionnext-org/NotionNext.git
+          git fetch upstream main --no-tags
+          if git merge-base --is-ancestor upstream/main HEAD; then
+            echo "Ya estas al dia con el proyecto original."
+            exit 0
+          fi
+          git checkout -B upstream-sync
+          if ! git merge upstream/main --no-edit; then
+            echo "CONFLICTO: hay cambios que chocan con tus personalizaciones. Revisa la guia del blog."
+            git merge --abort || true
+            exit 1
+          fi
+          git push --force origin upstream-sync
+          echo "Rama upstream-sync actualizada. Revisa la vista previa en Vercel antes de pasarla a main."
